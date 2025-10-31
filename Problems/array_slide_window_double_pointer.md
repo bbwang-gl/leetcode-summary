@@ -10,7 +10,7 @@
     - [27. 移除元素](#27-移除元素)
 - [双指针](#双指针)
   - [125. 验证回文串](#125-验证回文串)
-  - [其他](#其他)
+  - [双指针同类题](#双指针同类题)
 - [滑动窗口](#滑动窗口)
   - [代码模版：](#代码模版)
   - [209. 长度最小的子数组](#209-长度最小的子数组)
@@ -197,7 +197,7 @@ public:
 
 ```
 
-#### 其他
+#### 双指针同类题
 * [392. 判断子序列](https://leetcode.cn/problems/is-subsequence/)
 * [两数之和 II - 输入有序数组](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/descriptio)
 * [15. 三数之和](https://leetcode.cn/problems/3sum/description/)
