@@ -19,12 +19,13 @@
 
 
 ### 数组
+
 ####  介绍
 数组一般只能从左到右或者从右到左扫描， 有时候需要结合两个方向扫描； 有时候需要两个指针完成从左到右扫描； 某些时候扫描不是步进++， 而是jump。
 #### 左右两个方向扫描
 ##### [135. 分发糖果](https://leetcode.cn/problems/candy/description/)
 
-```
+```cpp
 class Solution {
 /*
 candy[i] 需要同时满足 左右两边的性质， 如果 ratings[i] > ratings[i-1]; 则 candy[i] > candy[i-1];
@@ -61,7 +62,7 @@ public:
 ```
 ##### [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water)
 
-```
+```cpp
 class Solution {
 public:
     int trap(vector<int>& height) {
@@ -96,7 +97,7 @@ public:
 
 ##### [26. 删除有序数组中的重复项](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/)
 
-```
+```cpp
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
@@ -114,7 +115,8 @@ public:
 ```
 
 ##### [80. 删除有序数组中的重复项 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/)
-```
+
+```cpp
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
@@ -134,7 +136,7 @@ public:
 };
 ```
 ##### [27. 移除元素](https://leetcode.cn/problems/remove-element/description/)
-```
+```cpp
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
@@ -166,7 +168,7 @@ public:
 
 #### [125. 验证回文串](https://leetcode.cn/problems/valid-palindrome/description/)
 
-```
+```cpp
 class Solution {
 public:
     bool isPalindrome(string s) {
@@ -218,7 +220,7 @@ public:
 
 #### [209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/description/) 
 
-```
+```cpp
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
@@ -238,7 +240,7 @@ public:
 };
 ```
 #### [3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/submissions/)
-```
+```cpp
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -259,7 +261,7 @@ public:
 ```
 
 #### [30. 串联所有单词的子串](https://leetcode.cn/problems/substring-with-concatenation-of-all-words/)
-```
+```cpp
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
