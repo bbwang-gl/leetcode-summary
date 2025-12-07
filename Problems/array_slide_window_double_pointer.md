@@ -343,5 +343,29 @@ public:
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 **/
 ```
-
+[3381. 长度可被 K 整除的子数组的最大元素和](https://leetcode.cn/problems/maximum-subarray-sum-with-length-divisible-by-k/)
+```cpp 
+class Solution {
+public:
+    long long maxSubarraySum(vector<int>& nums, int k) {
+        int n = nums.size();
+        long long prefixSum = 0, maxSum = LONG_LONG_MIN;
+        vector<long long> kSum(k, 0);
+        for (int i = 0; i < n; i++) {
+            prefixSum += nums[i]; 
+            if (i < k -1) {
+                kSum[i] = prefixSum;
+            } else {
+                maxSum = max(maxSum, prefixSum - kSum[i % k]);
+                kSum[i % k] = min(kSum[i % k], prefixSum);
+            }
+            
+        }
+        return maxSum;
+    }
+};
+/*
+对于滑动窗口的题型， 注意和 取模 类型的题结合使用，以及前缀和。
+*/
+```
 

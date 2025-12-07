@@ -1,3 +1,9 @@
+- [编程技巧](#编程技巧)
+    - [`<bits/stdc++.h>`](#bitsstdch)
+- [stl 常用容器，方法](#stl-常用容器方法)
+  - [string](#string)
+    - [to\_string](#to_string)
+    - [string to digit](#string-to-digit)
 - [大根堆](#大根堆)
 - [排序](#排序)
   - [堆排序](#堆排序)
@@ -8,7 +14,29 @@
     - [后续遍历](#后续遍历)
 - [搜索](#搜索)
   - [深搜](#深搜)
+    - [深搜小节](#深搜小节)
+      - [适用场景](#适用场景)
+      - [代码模版](#代码模版)
   - [广搜](#广搜)
+- [栈](#栈)
+- [线性表](#线性表)
+  - [数组](#数组)
+  - [单链表](#单链表)
+
+# 编程技巧
+### `<bits/stdc++.h>`   
+#include <bits/stdc++.h> 是 GCC（GNU Compiler Collection）编译器提供的一种非标准头文件，它的作用是一次性包含 C++ 标准库中的几乎所有常用头文件。
+
+# stl 常用容器，方法
+## string
+header `<string>` 
+### to_string 
+int/long/long long/unsigned/unsigned long/unsigned long long/float/double/long double to string.
+### string to digit
+stod/ stof/ stoi/ stol/ stold/ stoll/stoull/stoul  
+```cpp 
+unsigned long ul = std::stoul (str,nullptr,0);
+```
 
 # 大根堆
 ```cpp
@@ -373,6 +401,18 @@ public:
   ```
 # 搜索
 ## 深搜
+### 深搜小节
+ref: https://github.com/soulmachine/leetcode
+
+#### 适用场景
+递归必然是深搜。 所以如果是递归数据结构，（单链表、二叉树、集合）都可以用深搜。
+#### 代码模版
+```cpp
+void dfs(input, path, result, int cur or gap) {
+    
+}
+```
+
 [200. 岛屿数量](https://leetcode.cn/problems/number-of-islands/description/)
 ```cpp
 class Solution {
@@ -446,3 +486,114 @@ public:
     }
 };
 ```
+# 栈
+[32. 最长有效括号](https://leetcode.cn/problems/longest-valid-parentheses/description/)
+```cpp
+/*
+思路： stack 里存储的数据应该是： 上一个匹配失败的“）”的index， 等待匹配的“（”的index的集合， 这样的话未被匹配的“（” 可能有机会连续起来获得最大子串长度，而栈底 元素也方便计算本轮匹配的最大长度。
+*/
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        stack<int> st;
+        st.push(-1); // 初始基准
+        int maxLen = 0;
+
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(') {
+                st.push(i);
+            } else {
+                st.pop();
+                if (st.empty()) {
+                    st.push(i);
+                } else {
+                    maxLen = max(maxLen, i - st.top());
+                }
+            }
+        }
+        return maxLen;
+    }
+};
+```
+# 线性表
+## 数组
+[80. 删除有序数组中的重复项 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii)
+```cpp
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int k = 0, count = 0;
+        for (int i = 0; i < nums.size(); i++){
+            if(i == 0 || nums[i] != nums[i-1]){ 
+                count = 1;
+                nums[k++] = nums[i];
+            } else {
+                if (count < 2) {
+                    nums[k++] = nums[i];
+                    count++;
+                }
+            }
+        }
+        return k;
+    }
+};
+```
+- [20.有效括号](https://leetcode.cn/problems/valid-parentheses/description/)
+[26. 删除有序数组中的重复项](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/)
+
+
+## 单链表
+[92. 反转链表 II](https://leetcode.cn/problems/reverse-linked-list-ii/)
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if (left == right) {
+            return head;
+        }
+
+        ListNode dummy;
+        dummy.next = head;
+        ListNode *p = head, *pre = &dummy;
+        ListNode* tail = nullptr;
+        int i = 1;
+        while (i < left && p) {
+            i++;
+            pre = p;
+            p = p->next;
+        };
+        if (!p) {
+            return head;
+        }
+        tail = p;
+        i = left + 1;
+        p = p->next;
+        while (p && i <= right) {
+            tail->next = p->next;
+            p->next = pre->next;
+            pre->next = p;
+            // next
+            p = tail->next;
+            i++;
+        }
+        return dummy.next; // 注意输出的是dummy.next， 而不是head， head 可能不再是新链表的head
+    }
+};
+```
+- [206.反转链表](https://leetcode.cn/problems/reverse-linked-list/description/)
+- 快慢指针  
+  - [142.环形链表II](https://leetcode.cn/problems/linked-list-cycle-ii/description/)
+  - [141.环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+
+
+

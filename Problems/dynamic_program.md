@@ -18,6 +18,7 @@
   - [15-6 公司聚会计划](#15-6-公司聚会计划)
   - [15-10 投资策略规划](#15-10-投资策略规划)
   - [15-12](#15-12)
+- [leetcode 股票买卖](#leetcode-股票买卖)
 
 # 动态规划适用性
 要判断问题是否适合dp解决，必须满足两个条件： 最优子结构和重叠子问题是动态规划的必要条件， 比如说最短简单路径满足满足最优子结构， 最长简单路径确不满足。
@@ -200,3 +201,14 @@ for all item i in group k
  F[v] ←max{F[v],F[v−Ci]+Wi}
 
 这里三层循环的顺序保证了每一组内的物品最多只有一个会被添加到背包中。 另外,显然可以对每组内的物品应用2.3中的优化。
+
+# leetcode 股票买卖
+
+[股票买卖总结](https://labuladong.online/algo/dynamic-programming/stock-problem-summary/) 
+
+- [121. 买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/)   
+- [122. 买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/)
+- [123. 买卖股票的最佳时机 III](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/) 
+- [188. 买卖股票的最佳时机 IV](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/) 
+- [309. 最佳买卖股票时机含冷冻期](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown)   
+- [714. 买卖股票的最佳时机含手续费](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/) 
